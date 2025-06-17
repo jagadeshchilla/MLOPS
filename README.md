@@ -26,7 +26,6 @@
 - [🧪 Running Examples](#-running-examples)
 - [📊 MLflow Integration](#-mlflow-integration)
 - [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
 
 ## 🎯 Overview
 
@@ -263,9 +262,6 @@ We welcome contributions! Please see our contributing guidelines:
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
