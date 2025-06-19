@@ -1,0 +1,3 @@
+# This file ensures the raw_data directory is tracked by Git
+# Raw data files in this folder should be managed by DVC, not Git
+# Remove this file once you add actual data with: dvc add Data/raw_data/your_data.csv 

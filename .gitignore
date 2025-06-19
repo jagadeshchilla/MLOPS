@@ -355,9 +355,25 @@ tensorboard_logs/
 # Weights & Biases
 wandb/
 
-# DVC
-.dvc/
-Dvc/
+# DVC - ignore everything except Data folder structure
+/Dvc/*
+!/Dvc/Data/
+!/Dvc/README.md
+!/Dvc/Data/*/.gitkeep
+
+# Large DVC tracked folders - these should be managed by DVC
+/Dvc/Data/large_datasets/*
+!/Dvc/Data/large_datasets/.gitkeep
+/Dvc/Data/models/*
+!/Dvc/Data/models/.gitkeep
+/Dvc/Data/raw_data/*
+!/Dvc/Data/raw_data/.gitkeep
+/Dvc/Data/processed_data/*
+!/Dvc/Data/processed_data/.gitkeep
+/Dvc/Data/features/*
+!/Dvc/Data/features/.gitkeep
+/Dvc/Data/artifacts/*
+!/Dvc/Data/artifacts/.gitkeep
 
 # Hydra
 outputs/

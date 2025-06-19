@@ -1,0 +1,3 @@
+# This file ensures the features directory is tracked by Git
+# Feature engineering outputs in this folder should be managed by DVC, not Git
+# Remove this file once you add actual features with: dvc add Data/features/your_features.npy 

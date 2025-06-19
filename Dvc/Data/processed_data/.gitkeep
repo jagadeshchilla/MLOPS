@@ -1,0 +1,3 @@
+# This file ensures the processed_data directory is tracked by Git
+# Processed data files in this folder should be managed by DVC, not Git
+# Remove this file once you add actual data with: dvc add Data/processed_data/your_processed_data.parquet 
