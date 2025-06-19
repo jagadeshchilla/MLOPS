@@ -355,23 +355,9 @@ tensorboard_logs/
 # Weights & Biases
 wandb/
 
-# DVC (Data Version Control)
+# DVC
 .dvc/
-.dvcignore
-*.dvc
-
-# DVC Demo folders
-/DVCDEMO/
-DVCDEMO/.dvc/
-DVCDEMO/data/
-DVCDEMO/.git/
-
-# DVC folders (ignore large datasets)
-/Dvc/
-Dvc/.dvc/
-Dvc/Data/
-Dvc/.git/
-Dvc/venv/
+Dvc/
 
 # Hydra
 outputs/
