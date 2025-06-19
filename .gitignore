@@ -358,6 +358,17 @@ wandb/
 # DVC
 .dvc/
 
+# DVC Demo - ignore large files and DVC cache
+DVCDEMO/.dvc/cache/
+DVCDEMO/data/*.csv
+DVCDEMO/data/*.xlsx
+DVCDEMO/data/*.json
+DVCDEMO/data/*.parquet
+DVCDEMO/data/*.pkl
+DVCDEMO/data/*.h5
+DVCDEMO/models/
+DVCDEMO/outputs/
+
 # Hydra
 outputs/
 multirun/
