@@ -7,6 +7,7 @@
 [![Pandas](https://img.shields.io/badge/Pandas-1.5%2B-purple?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org)
 [![NumPy](https://img.shields.io/badge/NumPy-1.24%2B-blue?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org)
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3%2B-red?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
+[![DVC](https://img.shields.io/badge/DVC-Data%20Version%20Control-blue?style=for-the-badge&logo=dvc&logoColor=white)](https://dvc.org)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
@@ -25,6 +26,7 @@
 - [💻 Installation](#-installation)
 - [🧪 Running Examples](#-running-examples)
 - [📊 MLflow Integration](#-mlflow-integration)
+- [🗂️ DVC Demo](#️-dvc-demo)
 - [🤝 Contributing](#-contributing)
 
 ## 🎯 Overview
@@ -35,6 +37,7 @@ This repository serves as a complete learning resource for **Machine Learning Op
 - **Data Analysis & Manipulation**
 - **Machine Learning Model Development**
 - **Experiment Tracking with MLflow**
+- **Data Version Control with DVC**
 - **Model Deployment & Monitoring**
 - **Web Application Development with Flask**
 
@@ -62,6 +65,7 @@ graph TD
     J --> K[Logging]
     K --> L[Flask Web Development]
     L --> M[MLflow & Experiment Tracking]
+    M --> N[DVC & Data Version Control]
 ```
 
 ## 🚀 Quick Start
@@ -159,6 +163,7 @@ graph TD
 ### **Machine Learning & MLOps**
 - ![scikit-learn](https://img.shields.io/badge/-Scikit--Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white) **Scikit-learn**
 - ![MLflow](https://img.shields.io/badge/-MLflow-0194E2?style=flat-square&logo=mlflow&logoColor=white) **MLflow**
+- ![DVC](https://img.shields.io/badge/-DVC-945DD6?style=flat-square&logo=dvc&logoColor=white) **DVC**
 - ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white) **TensorFlow**
 - ![Keras](https://img.shields.io/badge/-Keras-D00000?style=flat-square&logo=keras&logoColor=white) **Keras**
 
@@ -171,14 +176,14 @@ graph TD
 
 ### **Option 1: Using pip**
 ```bash
-pip install mlflow scikit-learn pandas numpy keras tensorflow hyperopt flask jupyter
+pip install mlflow scikit-learn pandas numpy keras tensorflow hyperopt flask jupyter dvc
 ```
 
 ### **Option 2: Using conda**
 ```bash
 conda create -n mlops python=3.8
 conda activate mlops
-conda install -c conda-forge mlflow scikit-learn pandas numpy keras tensorflow
+conda install -c conda-forge mlflow scikit-learn pandas numpy keras tensorflow dvc
 pip install hyperopt flask
 ```
 
@@ -215,6 +220,13 @@ cd "13-Flask/flask"
 python app.py
 ```
 
+### **DVC Data Version Control**
+```bash
+cd DVCDEMO
+dvc status  # Check data status
+dvc pull   # Pull tracked data
+```
+
 ## 📊 MLflow Integration
 
 This repository includes comprehensive MLflow examples:
@@ -240,6 +252,99 @@ mlflow/
 └── requirements.txt     # Dependencies
 ```
 
+## 🗂️ DVC Demo
+
+This repository includes a comprehensive **Data Version Control (DVC)** demonstration to showcase best practices for managing datasets and ML artifacts in MLOps workflows.
+
+### **🎯 What is DVC?**
+
+DVC (Data Version Control) is an open-source tool for data science and machine learning projects that:
+- **Tracks large datasets** and ML models
+- **Enables data versioning** similar to Git for code
+- **Provides data pipeline management**
+- **Ensures reproducibility** across different environments
+
+### **📁 DVC Demo Structure**
+
+```
+DVCDEMO/
+├── .dvc/                 # DVC configuration and cache
+├── .dvcignore           # Files to ignore in DVC tracking
+├── .git/                # Git repository for code versioning
+├── .gitignore          # Git ignore patterns
+└── data/
+    ├── data.txt        # Sample dataset (DVC tracked)
+    ├── data.txt.dvc    # DVC metadata file
+    └── .gitignore      # Ignore original data, track .dvc files
+```
+
+### **🔄 DVC Workflow Demonstration**
+
+The demo showcases a typical DVC workflow with versioned data:
+
+1. **Data Evolution Tracking**
+   - Version 1: Initial dataset creation
+   - Version 2: Data updates and modifications  
+   - Version 3: Final dataset version
+
+2. **Key DVC Commands**
+   ```bash
+   # Navigate to DVC demo
+   cd DVCDEMO
+   
+   # Check DVC status
+   dvc status
+   
+   # Add data to DVC tracking
+   dvc add data/data.txt
+   
+   # Commit DVC metadata to Git
+   git add data/data.txt.dvc .gitignore
+   git commit -m "Add data to DVC tracking"
+   
+   # Pull data from remote storage
+   dvc pull
+   
+   # Check data integrity
+   dvc status
+   ```
+
+### **💡 Key Learning Points**
+
+- **Data Versioning**: Learn how to track dataset changes over time
+- **Git Integration**: Understand how DVC works alongside Git
+- **Reproducibility**: Ensure consistent data across team members
+- **Storage Efficiency**: Manage large files without bloating Git repositories
+- **Pipeline Management**: Track data dependencies and transformations
+
+### **🔧 DVC Setup Requirements**
+
+```bash
+# Install DVC
+pip install dvc
+
+# Initialize DVC in your project
+dvc init
+
+# Add remote storage (optional)
+dvc remote add -d myremote /path/to/remote/storage
+
+# Track your first dataset
+dvc add data/your_dataset.csv
+git add data/your_dataset.csv.dvc .gitignore
+git commit -m "Track dataset with DVC"
+```
+
+### **🎯 Integration with MLOps Pipeline**
+
+The DVC demo demonstrates how data versioning fits into the complete MLOps workflow:
+
+1. **Data Collection** → DVC tracking
+2. **Data Processing** → Pipeline stages  
+3. **Model Training** → MLflow tracking
+4. **Model Deployment** → Flask applications
+5. **Monitoring** → Logging systems
+
 ## 🎓 Learning Outcomes
 
 By completing this course, you will:
@@ -248,6 +353,7 @@ By completing this course, you will:
 - ✅ Understand data analysis and visualization
 - ✅ Implement machine learning workflows
 - ✅ Track experiments with MLflow
+- ✅ Version control data with DVC
 - ✅ Deploy models using Flask
 - ✅ Follow MLOps best practices
 - ✅ Build end-to-end ML pipelines
