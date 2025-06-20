@@ -252,9 +252,9 @@ mlflow/
 └── requirements.txt     # Dependencies
 ```
 
-## 🗂️ DVC Demo
+## 🗂️ DVC & DagsHub Integration
 
-This repository includes a comprehensive **Data Version Control (DVC)** demonstration to showcase best practices for managing datasets and ML artifacts in MLOps workflows.
+This repository includes comprehensive demonstrations of **Data Version Control (DVC)** and **DagsHub integration** to showcase best practices for managing datasets, ML experiments, and collaborative MLOps workflows.
 
 ### **🎯 What is DVC?**
 
@@ -264,18 +264,33 @@ DVC (Data Version Control) is an open-source tool for data science and machine l
 - **Provides data pipeline management**
 - **Ensures reproducibility** across different environments
 
-### **📁 DVC Demo Structure**
+### **🎯 What is DagsHub?**
+
+DagsHub is a collaborative platform for machine learning teams that combines:
+- **🗂️ Data Version Control** with DVC integration
+- **🔬 Experiment Tracking** with MLflow integration
+- **👥 Team Collaboration** with Git-based workflows
+- **📊 Visualization** with built-in data and model visualization
+- **🔄 Reproducibility** across different environments
+
+### **📁 Demo Structure**
 
 ```
-DVCDEMO/
-├── .dvc/                 # DVC configuration and cache
-├── .dvcignore           # Files to ignore in DVC tracking
-├── .git/                # Git repository for code versioning
-├── .gitignore          # Git ignore patterns
-└── data/
-    ├── data.txt        # Sample dataset (DVC tracked)
-    ├── data.txt.dvc    # DVC metadata file
-    └── .gitignore      # Ignore original data, track .dvc files
+Dvc/
+├── README.md              # DVC overview and instructions
+├── DVCDEMO/              # Basic DVC demonstration
+│   ├── .dvc/             # DVC configuration and cache
+│   ├── .dvcignore        # Files to ignore in DVC tracking
+│   ├── .git/             # Git repository for code versioning
+│   ├── .gitignore        # Git ignore patterns
+│   └── data/
+│       ├── data.txt      # Sample dataset (DVC tracked)
+│       ├── data.txt.dvc  # DVC metadata file
+│       └── .gitignore    # Ignore original data, track .dvc files
+└── demodagshub/          # DagsHub integration demo
+    ├── README.md         # Comprehensive DagsHub guide
+    ├── venv/             # Virtual environment
+    └── .git/             # Git repository linked to DagsHub
 ```
 
 ### **🔄 DVC Workflow Demonstration**
@@ -309,16 +324,73 @@ The demo showcases a typical DVC workflow with versioned data:
    dvc status
    ```
 
+### **🔄 DagsHub Workflow Demonstration**
+
+The DagsHub demo showcases a complete MLOps workflow with collaborative features:
+
+1. **Integrated ML Platform**
+   - Data versioning with DVC
+   - Experiment tracking with MLflow
+   - Team collaboration with Git
+   - Visualization and monitoring
+
+2. **Key DagsHub Workflow**
+   ```bash
+   # Navigate to DagsHub demo
+   cd Dvc/demodagshub
+   
+   # Set up virtual environment
+   python -m venv venv
+   venv\Scripts\activate  # On Windows
+   
+   # Install dependencies
+   pip install dvc mlflow dagshub
+   
+   # Configure DagsHub integration
+   dvc remote add origin https://dagshub.com/username/repo.dvc
+   export MLFLOW_TRACKING_URI=https://dagshub.com/username/repo.mlflow
+   
+   # Track experiments and data
+   dvc add data/dataset.csv
+   git add data/dataset.csv.dvc
+   git commit -m "Add dataset to DVC"
+   git push origin main
+   dvc push
+   ```
+
+3. **Experiment Tracking Integration**
+   ```python
+   import mlflow
+   
+   # Set DagsHub as tracking server
+   mlflow.set_tracking_uri("https://dagshub.com/username/repo.mlflow")
+   
+   # Log experiments directly to DagsHub
+   with mlflow.start_run():
+       mlflow.log_param("algorithm", "RandomForest")
+       mlflow.log_metric("accuracy", 0.95)
+       mlflow.log_model(model, "model")
+   ```
+
 ### **💡 Key Learning Points**
 
+#### **DVC Fundamentals**
 - **Data Versioning**: Learn how to track dataset changes over time
 - **Git Integration**: Understand how DVC works alongside Git
 - **Reproducibility**: Ensure consistent data across team members
 - **Storage Efficiency**: Manage large files without bloating Git repositories
 - **Pipeline Management**: Track data dependencies and transformations
 
-### **🔧 DVC Setup Requirements**
+#### **DagsHub Integration**
+- **Platform Integration**: Combine DVC, MLflow, and Git in one platform
+- **Team Collaboration**: Share data, experiments, and models with team members
+- **Experiment Tracking**: Monitor ML experiments with centralized logging
+- **Model Registry**: Manage model versions and deployment stages
+- **Visualization**: Built-in charts and data exploration tools
 
+### **🔧 Setup Requirements**
+
+#### **Basic DVC Setup**
 ```bash
 # Install DVC
 pip install dvc
@@ -335,15 +407,47 @@ git add data/your_dataset.csv.dvc .gitignore
 git commit -m "Track dataset with DVC"
 ```
 
+#### **DagsHub Integration Setup**
+```bash
+# Install required packages
+pip install dvc mlflow dagshub
+
+# Create DagsHub repository at https://dagshub.com
+# Clone your DagsHub repository
+git clone https://dagshub.com/username/repo.git
+cd repo
+
+# Initialize DVC with DagsHub remote
+dvc init
+dvc remote add origin https://dagshub.com/username/repo.dvc
+dvc remote default origin
+
+# Configure MLflow for DagsHub
+export MLFLOW_TRACKING_URI=https://dagshub.com/username/repo.mlflow
+
+# Set up authentication (optional)
+export DAGSHUB_USER_TOKEN=your-token-here
+```
+
 ### **🎯 Integration with MLOps Pipeline**
 
-The DVC demo demonstrates how data versioning fits into the complete MLOps workflow:
+The DVC and DagsHub demos demonstrate how data versioning and experiment tracking fit into the complete MLOps workflow:
 
+#### **Standard MLOps Pipeline**
 1. **Data Collection** → DVC tracking
 2. **Data Processing** → Pipeline stages  
 3. **Model Training** → MLflow tracking
 4. **Model Deployment** → Flask applications
 5. **Monitoring** → Logging systems
+
+#### **DagsHub-Enhanced MLOps Pipeline**
+1. **Data Collection** → DVC + DagsHub data versioning
+2. **Data Processing** → Reproducible DVC pipelines
+3. **Model Training** → MLflow + DagsHub experiment tracking
+4. **Collaboration** → Team sharing and review on DagsHub
+5. **Model Registry** → Centralized model management
+6. **Deployment** → Model serving with monitoring
+7. **Feedback Loop** → Continuous improvement with team insights
 
 ## 🎓 Learning Outcomes
 
