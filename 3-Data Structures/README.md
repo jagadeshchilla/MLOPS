@@ -25,14 +25,6 @@ By the end of this module, you will:
 | `3.2-Tuples.ipynb` | Tuples overview | Ordered, immutable collections |
 | `3.3-Sets.ipynb` | Sets and operations | Unordered, unique elements |
 | `3.4-Dictionaries.ipynb` | Dictionaries and keys | Key-value pairs |
-| `list_Assignment.ipynb` | List practice exercises | Hands-on list problems |
-| `list_assignment_solution.ipynb` | List solutions | Reference solutions |
-| `tuple_assignment.ipynb` | Tuple practice exercises | Hands-on tuple problems |
-| `tuple_assignment_solution.ipynb` | Tuple solutions | Reference solutions |
-| `sets_assignment.ipynb` | Set practice exercises | Hands-on set problems |
-| `set_assignments_solution.ipynb` | Set solutions | Reference solutions |
-| `dictionaries_assignment.ipynb` | Dictionary practice exercises | Hands-on dictionary problems |
-| `dictionaries_assignment_solution.ipynb` | Dictionary solutions | Reference solutions |
 
 ## 🚀 Quick Start
 
@@ -280,15 +272,6 @@ scores = {person["name"]: person["score"] for person in data}
 After mastering data structures, you're ready to move to:
 - **Module 4**: Functions (Code organization and reusability)
 - **Module 5**: Modules and Packages (Code modularity)
-
-## 📝 Assignment Checklist
-
-- [ ] Understand lists and their methods
-- [ ] Master tuple operations and immutability
-- [ ] Apply set operations and uniqueness
-- [ ] Use dictionaries for key-value mapping
-- [ ] Complete all assignment exercises
-- [ ] Choose appropriate data structure for different scenarios
 
 ## 🆘 Common Issues & Solutions
 

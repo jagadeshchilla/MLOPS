@@ -23,8 +23,6 @@ By the end of this module, you will:
 |------|-------------|--------------|
 | `7.1-exception.ipynb` | Exception fundamentals | try, except, finally, else |
 | `7.2-customexception.ipynb` | Custom exceptions | Creating and raising custom errors |
-| `exceptionhandlingquestions.ipynb` | Practice exercises | Error handling challenges |
-| `exceptionhandlingsolution.ipynb` | Exercise solutions | Reference implementations |
 | `example1.txt` | Sample file | File handling with exceptions |
 
 ## 🚀 Quick Start
@@ -395,17 +393,6 @@ class ResourceManager:
 4. **Clean up**: Use `finally` or context managers for cleanup
 5. **Don't ignore**: Never use bare `except:` clauses
 6. **Chain exceptions**: Use `raise ... from` for exception chaining
-
-## 📝 Assignment Checklist
-
-- [ ] Use try-except blocks effectively
-- [ ] Handle multiple exception types
-- [ ] Create custom exception classes
-- [ ] Implement exception hierarchies
-- [ ] Use finally for cleanup operations
-- [ ] Chain exceptions appropriately
-- [ ] Debug using exception information
-- [ ] Complete all assignment exercises
 
 ## 🆘 Common Mistakes & Solutions
 

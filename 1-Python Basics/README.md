@@ -24,8 +24,6 @@ By the end of this module, you will:
 | `1.1-Variables.ipynb` | Variable declaration and usage | Variable assignment, naming rules |
 | `1.2-Datatypes.ipynb` | Python data types overview | int, float, string, boolean |
 | `1.3-operators.ipynb` | Operators in Python | Arithmetic, comparison, logical operators |
-| `assignment_question.ipynb` | Practice exercises | Hands-on coding challenges |
-| `assignment_solution.ipynb` | Solutions to exercises | Reference solutions with explanations |
 | `test.py` | Python script example | Script execution, basic syntax |
 
 ## 🚀 Quick Start
@@ -133,15 +131,6 @@ print(f"String: {num_str}, Int: {num_int}, Float: {num_float}")
 After mastering Python basics, you're ready to move to:
 - **Module 2**: Control Flow (Conditional statements and loops)
 - **Module 3**: Data Structures (Lists, tuples, sets, dictionaries)
-
-## 📝 Assignment Checklist
-
-- [ ] Complete all notebook exercises
-- [ ] Run the test script successfully
-- [ ] Understand variable naming conventions
-- [ ] Master basic data types and conversions
-- [ ] Practice with different operators
-- [ ] Create your own simple Python program
 
 ## 🆘 Common Issues & Solutions
 

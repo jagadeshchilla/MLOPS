@@ -30,12 +30,6 @@ By the end of this module, you will:
 | `8.6-magicmethods.ipynb` | Magic methods | `__init__`, `__str__`, `__len__`, etc. |
 | `8.7-OperatorOverloading.ipynb` | Operator overloading | Custom operators for classes |
 | `8.8-customexception.ipynb` | Custom exceptions in OOP | Exception hierarchies |
-| `oopsquestion.ipynb` | Basic OOP exercises | Class design challenges |
-| `oopssolution.ipynb` | Basic OOP solutions | Reference implementations |
-| `inhertiancequestions.ipynb` | Inheritance exercises | Inheritance design problems |
-| `inheritancesolutions.ipynb` | Inheritance solutions | Reference implementations |
-| `classesobjectquestions.ipynb` | Advanced OOP exercises | Complex class interactions |
-| `classesobjectssolution.ipynb` | Advanced OOP solutions | Reference implementations |
 
 ## 🚀 Quick Start
 
@@ -507,16 +501,6 @@ class Library:
 5. **Test your classes**: Write unit tests for methods
 6. **Use properties**: Control attribute access with getters/setters
 
-## 📝 Assignment Checklist
-
-- [ ] Create classes with proper constructors
-- [ ] Implement inheritance hierarchies
-- [ ] Use method overriding for polymorphism
-- [ ] Apply encapsulation with private attributes
-- [ ] Create abstract base classes
-- [ ] Implement magic methods
-- [ ] Design custom exceptions
-- [ ] Complete all assignment exercises
 
 ## 🆘 Common Issues & Solutions
 

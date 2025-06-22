@@ -22,8 +22,6 @@ By the end of this module, you will:
 |------|-------------|--------------|
 | `Conditionalstatements.ipynb` | If, elif, else statements | Decision making, boolean logic |
 | `Loops.ipynb` | For and while loops | Iteration, range, loop control |
-| `assignments.ipynb` | Practice exercises | Hands-on coding challenges |
-| `assignment_solutions.ipynb` | Solutions to exercises | Reference solutions with explanations |
 
 ## 🚀 Quick Start
 
@@ -241,15 +239,6 @@ while True:
 After mastering control flow, you're ready to move to:
 - **Module 3**: Data Structures (Lists, tuples, sets, dictionaries)
 - **Module 4**: Functions (Code organization and reusability)
-
-## 📝 Assignment Checklist
-
-- [ ] Understand if, elif, else statements
-- [ ] Master for and while loops
-- [ ] Use break and continue statements
-- [ ] Implement nested conditions and loops
-- [ ] Create programs with decision-making logic
-- [ ] Complete all assignment exercises
 
 ## 🆘 Common Issues & Solutions
 

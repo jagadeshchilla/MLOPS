@@ -30,10 +30,7 @@ By the end of this module, you will:
 | `10.4-readdata.ipynb` | File I/O operations | CSV, Excel, JSON reading |
 | `10.5-matplotlib.ipynb` | Data visualization | Plots, charts, customization |
 | `10.6-seaborn.ipynb` | Statistical visualization | Advanced plotting |
-| `numpyassignments.ipynb` | NumPy practice | Hands-on exercises |
-| `numpysolutions.ipynb` | NumPy solutions | Reference answers |
-| `pandasasssignments.ipynb` | Pandas practice | Data manipulation exercises |
-| `pandassolution.ipynb` | Pandas solutions | Reference answers |
+
 
 ### 📁 Data Files
 | File | Description | Format |
@@ -325,15 +322,6 @@ After mastering data analysis, you're ready to move to:
 - **Module 12**: Logging (Production-ready code practices)
 - **MLflow**: Experiment tracking and model management
 
-## 📝 Assignment Checklist
-
-- [ ] Master NumPy array operations
-- [ ] Understand Pandas DataFrames and Series
-- [ ] Create various types of visualizations
-- [ ] Read data from different file formats
-- [ ] Perform data cleaning and transformation
-- [ ] Complete all practice assignments
-- [ ] Analyze at least one real dataset
 
 ## 🆘 Common Issues & Solutions
 

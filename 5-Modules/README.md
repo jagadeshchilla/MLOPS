@@ -23,8 +23,6 @@ By the end of this module, you will:
 |------|-------------|--------------|
 | `5.1-import.ipynb` | Import systems | import, from, as keywords |
 | `5.2-Standardlibrary.ipynb` | Built-in modules | os, sys, datetime, math, random |
-| `packagesquestion.ipynb` | Package exercises | Package creation, __init__.py |
-| `packagessolution.ipynb` | Package solutions | Reference implementations |
 | `test.py` | Custom module example | Module creation and testing |
 | `source.txt` | Source file for operations | File handling examples |
 | `destination.txt` | Destination file | File copying demonstrations |
@@ -519,17 +517,6 @@ Modules and packages are essential for:
 - **Using third-party libraries**
 - **Building distributable packages**
 
-## 📝 Assignment Checklist
-
-- [ ] Import modules using different methods
-- [ ] Explore Python standard library modules
-- [ ] Create custom modules with functions
-- [ ] Build a package with `__init__.py`
-- [ ] Use subpackages and nested imports
-- [ ] Handle file operations with `os` module
-- [ ] Work with dates using `datetime`
-- [ ] Create reusable utility modules
-- [ ] Complete all assignment exercises
 
 ## 🆘 Common Issues & Solutions
 

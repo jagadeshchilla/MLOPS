@@ -24,8 +24,6 @@ By the end of this module, you will:
 | `9.1-Iterators.ipynb` | Iterator protocol | `__iter__`, `__next__`, iteration |
 | `9.2-Generators.ipynb` | Generator functions | `yield`, generator expressions |
 | `9.3-Decorators.ipynb` | Decorator patterns | Function wrapping, closures |
-| `itergenerdecorquestions.ipynb` | Practice exercises | Advanced concept challenges |
-| `itergendecorsolutions.ipynb` | Exercise solutions | Reference implementations |
 
 ## 🚀 Quick Start
 
@@ -471,15 +469,6 @@ def data_pipeline():
 5. **Test decorated functions**: Ensure decorators don't break functionality
 6. **Use built-in tools**: `itertools`, `functools` modules
 
-## 📝 Assignment Checklist
-
-- [ ] Implement custom iterators
-- [ ] Create generator functions
-- [ ] Build function decorators
-- [ ] Use generator expressions
-- [ ] Apply decorator patterns
-- [ ] Understand memory implications
-- [ ] Complete all assignment exercises
 
 ## 🆘 Common Issues & Solutions
 

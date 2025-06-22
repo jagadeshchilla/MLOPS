@@ -28,8 +28,6 @@ By the end of this module, you will:
 | `4.5-filterfunction.ipynb` | Filter function | Filtering data with conditions |
 | `advancefunctions.ipynb` | Advanced concepts | Decorators, closures, generators |
 | `advancefunctionsolution.ipynb` | Advanced solutions | Reference implementations |
-| `functionsassignment.ipynb` | Practice exercises | Hands-on coding challenges |
-| `functionsassignmentsoln.ipynb` | Assignment solutions | Reference solutions |
 | `sample.txt` | Sample data file | File for reading exercises |
 
 ## 🚀 Quick Start
@@ -408,18 +406,6 @@ Functions serve as the building blocks for:
 - **Module 8**: Methods in classes and objects
 - **Module 10**: Data analysis with pandas and numpy
 - **Module 13**: Flask web application routes
-
-## 📝 Assignment Checklist
-
-- [ ] Define functions with parameters and return values
-- [ ] Use default parameters and keyword arguments
-- [ ] Master lambda functions for simple operations
-- [ ] Apply map() and filter() to process data
-- [ ] Understand variable scope (local vs global)
-- [ ] Implement decorators and closures
-- [ ] Create generator functions
-- [ ] Write comprehensive function documentation
-- [ ] Complete all assignment exercises
 
 ## 🆘 Common Issues & Solutions
 

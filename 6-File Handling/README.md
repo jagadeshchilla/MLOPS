@@ -23,8 +23,6 @@ By the end of this module, you will:
 |------|-------------|--------------|
 | `6.1-fileoperation.ipynb` | Basic file operations | Reading, writing, file modes |
 | `6.2-filepath.ipynb` | File path manipulation | os.path, pathlib, directory operations |
-| `filehandlingquestions.ipynb` | Practice exercises | Hands-on file handling challenges |
-| `filehandlingsolution.ipynb` | Exercise solutions | Reference implementations |
 | `example.txt` | Sample text file | Reading and writing examples |
 | `example.bin` | Binary file example | Binary file operations |
 | `destination.txt` | Output file example | File copying and writing |
@@ -337,16 +335,6 @@ def load_json(filepath):
 5. **Use appropriate file modes**
 6. **Implement proper error handling**
 
-## 📝 Assignment Checklist
-
-- [ ] Read and write text files
-- [ ] Handle binary files
-- [ ] Use context managers properly
-- [ ] Manipulate file paths
-- [ ] Work with CSV and JSON files
-- [ ] Implement error handling
-- [ ] Process directories and file listings
-- [ ] Complete all assignment exercises
 
 ## 🆘 Common Issues & Solutions
 
