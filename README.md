@@ -8,6 +8,9 @@
 [![NumPy](https://img.shields.io/badge/NumPy-1.24%2B-blue?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org)
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3%2B-red?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
 [![DVC](https://img.shields.io/badge/DVC-Data%20Version%20Control-blue?style=for-the-badge&logo=dvc&logoColor=white)](https://dvc.org)
+[![AWS](https://img.shields.io/badge/AWS-Cloud%20Platform-orange?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com)
+[![EC2](https://img.shields.io/badge/EC2-Compute%20Cloud-ff9900?style=for-the-badge&logo=amazon-ec2&logoColor=white)](https://aws.amazon.com/ec2/)
+[![S3](https://img.shields.io/badge/S3-Object%20Storage-569A31?style=for-the-badge&logo=amazon-s3&logoColor=white)](https://aws.amazon.com/s3/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
@@ -26,6 +29,7 @@
 - [💻 Installation](#-installation)
 - [🧪 Running Examples](#-running-examples)
 - [📊 MLflow Integration](#-mlflow-integration)
+- [☁️ MLflow on AWS](#️-mlflow-on-aws)
 - [🗂️ DVC Demo](#️-dvc-demo)
 - [🤝 Contributing](#-contributing)
 
@@ -37,6 +41,7 @@ This repository serves as a complete learning resource for **Machine Learning Op
 - **Data Analysis & Manipulation**
 - **Machine Learning Model Development**
 - **Experiment Tracking with MLflow**
+- **Cloud-based MLflow on AWS Infrastructure**
 - **Data Version Control with DVC**
 - **Model Deployment & Monitoring**
 - **Web Application Development with Flask**
@@ -65,7 +70,8 @@ graph TD
     J --> K[Logging]
     K --> L[Flask Web Development]
     L --> M[MLflow & Experiment Tracking]
-    M --> N[DVC & Data Version Control]
+    M --> N[MLflow on AWS Cloud]
+    N --> O[DVC & Data Version Control]
 ```
 
 ## 🚀 Quick Start
@@ -172,6 +178,12 @@ graph TD
 - ![HTML5](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white) **HTML5**
 - ![CSS3](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) **CSS3**
 
+### **Cloud Infrastructure**
+- ![AWS](https://img.shields.io/badge/-AWS-FF9900?style=flat-square&logo=amazon-aws&logoColor=white) **Amazon Web Services**
+- ![EC2](https://img.shields.io/badge/-EC2-FF9900?style=flat-square&logo=amazon-ec2&logoColor=white) **Elastic Compute Cloud**
+- ![S3](https://img.shields.io/badge/-S3-569A31?style=flat-square&logo=amazon-s3&logoColor=white) **Simple Storage Service**
+- ![IAM](https://img.shields.io/badge/-IAM-FF9900?style=flat-square&logo=amazon-aws&logoColor=white) **Identity & Access Management**
+
 ## 💻 Installation
 
 ### **Option 1: Using pip**
@@ -214,6 +226,14 @@ mlflow ui  # Start MLflow UI
 jupyter lab get-started.ipynb
 ```
 
+### **MLflow on AWS**
+```bash
+cd mlflow_AWS
+source venv/bin/activate  # Activate virtual environment
+python app.py            # Run AWS MLflow application
+# Access MLflow UI at: http://[EC2-Public-IP]:5000
+```
+
 ### **Flask Applications**
 ```bash
 cd "13-Flask/flask"
@@ -251,6 +271,262 @@ mlflow/
 ├── get-started.ipynb    # Quick start guide
 └── requirements.txt     # Dependencies
 ```
+
+## ☁️ MLflow on AWS
+
+> **🚨 COST NOTICE**: For cost-effectiveness and to avoid ongoing AWS charges, all AWS resources (S3 buckets, EC2 instances, and related infrastructure) have been terminated after completing this demonstration. This repository serves as a comprehensive guide for setting up your own MLflow on AWS infrastructure.
+
+This repository includes a comprehensive **MLflow on AWS** implementation, demonstrating enterprise-grade MLOps infrastructure using cloud services. This setup enables scalable experiment tracking, centralized artifact storage, and collaborative machine learning workflows.
+
+### **🎯 What is MLflow on AWS?**
+
+MLflow on AWS provides a production-ready, cloud-based MLOps platform that combines:
+- **🔬 Centralized Experiment Tracking** with remote MLflow server
+- **📦 Scalable Artifact Storage** using Amazon S3
+- **🖥️ Cloud Infrastructure** with EC2 instances
+- **🔐 Secure Access Management** through AWS IAM
+- **🌐 Remote Accessibility** for distributed teams
+
+### **🏗️ Architecture Overview**
+
+```mermaid
+graph TB
+    subgraph "Local Development"
+        A[Python ML Scripts] --> B[MLflow Client]
+        B --> C[Experiment Logging]
+    end
+    
+    subgraph "AWS Cloud Infrastructure"
+        D[EC2 Instance] --> E[MLflow Server]
+        E --> F[Tracking Database]
+        E --> G[S3 Bucket]
+        G --> H[Model Artifacts]
+        G --> I[Experiment Data]
+    end
+    
+    subgraph "Access & Security"
+        J[IAM User] --> K[AWS CLI]
+        K --> L[Security Groups]
+        L --> M[Port 5000]
+    end
+    
+    C --> E
+    J --> D
+    
+    style D fill:#ff9900,stroke:#333,stroke-width:2px
+    style G fill:#569A31,stroke:#333,stroke-width:2px
+    style E fill:#0194E2,stroke:#333,stroke-width:2px
+```
+
+### **📁 AWS MLflow Project Structure**
+
+```
+mlflow_AWS/
+├── README.md              # Comprehensive AWS setup guide
+├── app.py                 # MLflow application with AWS integration
+├── requirements.txt       # Python dependencies
+├── mlruns/               # Local MLflow runs (backup)
+└── venv/                 # Virtual environment
+```
+
+### **🚀 AWS Infrastructure Setup**
+
+The AWS MLflow implementation follows enterprise best practices for scalable MLOps infrastructure:
+
+#### **1. 🔐 IAM Configuration**
+- **Administrator Access**: Full AWS service permissions
+- **Programmatic Access**: AWS CLI and SDK integration
+- **Security Best Practices**: Least privilege principle
+
+#### **2. 🖥️ EC2 Instance Setup**
+- **Operating System**: Ubuntu Server (latest LTS)
+- **Instance Type**: Optimized for MLflow workloads
+- **Security Groups**: Port 5000 configured for MLflow UI
+- **Elastic IP**: Consistent public IP addressing
+
+#### **3. 📦 S3 Bucket Configuration**
+- **Artifact Storage**: Centralized model and data storage
+- **Versioning**: Automatic artifact versioning
+- **Access Control**: Secure bucket policies
+- **Cost Optimization**: Intelligent tiering
+
+### **⚙️ Complete Setup Process**
+
+The setup process is designed for production environments with enterprise security:
+
+#### **Phase 1: AWS Account Preparation**
+```bash
+# 1. Login to AWS Console
+# 2. Create IAM user with AdministratorAccess policy
+# 3. Generate Access Key and Secret Key
+# 4. Create dedicated S3 bucket for MLflow artifacts
+# 5. Launch EC2 instance with Ubuntu AMI
+```
+
+#### **Phase 2: Local AWS CLI Configuration**
+```bash
+# Configure AWS credentials locally
+aws configure
+# AWS Access Key ID: [Your Access Key]
+# AWS Secret Access Key: [Your Secret Key]  
+# Default region name: [Your Preferred Region]
+# Default output format: json
+```
+
+#### **Phase 3: EC2 Instance Configuration**
+
+The EC2 setup follows infrastructure as code principles:
+
+```bash
+# System updates and dependencies
+sudo apt update
+
+# Python ecosystem
+sudo apt install python3-pip
+
+# Virtual environment management
+sudo apt install pipenv
+sudo apt install virtualenv
+
+# Project setup
+mkdir mlflow
+cd mlflow
+
+# MLflow environment
+pipenv install mlflow
+pipenv install awscli
+pipenv install boto3
+
+# Activate environment
+pipenv shell
+```
+
+#### **Phase 4: AWS Credentials on EC2**
+```bash
+# Configure AWS credentials on EC2 instance
+aws configure
+# Use the same credentials configured locally
+```
+
+#### **Phase 5: MLflow Server Deployment**
+```bash
+# Launch MLflow server with S3 backend
+mlflow server -h 0.0.0.0 --default-artifact-root s3://mlflowtracking007
+
+# Server will be accessible at:
+# http://[EC2-Public-IP]:5000
+```
+
+### **🔧 Client Configuration**
+
+#### **Local Development Setup**
+```bash
+# Set MLflow tracking URI to point to AWS server
+export MLFLOW_TRACKING_URI=http://ec2-13-203-223-225.ap-south-1.compute.amazonaws.com:5000/
+
+# Verify connection
+mlflow experiments list
+```
+
+#### **Python Application Integration**
+```python
+import mlflow
+import os
+
+# Configure MLflow for AWS
+os.environ['MLFLOW_TRACKING_URI'] = 'http://ec2-13-203-223-225.ap-south-1.compute.amazonaws.com:5000/'
+
+# Start experiment tracking
+with mlflow.start_run():
+    # Your ML code here
+    mlflow.log_param("algorithm", "RandomForest")
+    mlflow.log_metric("accuracy", 0.95)
+    mlflow.log_model(model, "model")
+```
+
+### **🎯 Key Benefits of AWS Integration**
+
+#### **🚀 Scalability**
+- **Elastic Infrastructure**: Scale EC2 instances based on workload
+- **Unlimited Storage**: S3 provides virtually unlimited artifact storage
+- **Global Accessibility**: Access from anywhere with internet connection
+
+#### **🔒 Security & Compliance**
+- **IAM Integration**: Fine-grained access control
+- **VPC Support**: Network isolation capabilities
+- **Encryption**: Data encryption at rest and in transit
+- **Audit Trails**: CloudTrail integration for compliance
+
+#### **💰 Cost Optimization**
+- **Pay-as-you-use**: Only pay for resources consumed
+- **S3 Intelligent Tiering**: Automatic cost optimization
+- **Spot Instances**: Reduce EC2 costs for development environments
+
+#### **🔄 High Availability**
+- **Multi-AZ Deployment**: Deploy across multiple availability zones
+- **Backup & Recovery**: Automated backup strategies
+- **Disaster Recovery**: Cross-region replication capabilities
+
+### **📊 Monitoring & Maintenance**
+
+#### **Performance Monitoring**
+- **CloudWatch Integration**: Monitor EC2 and S3 metrics
+- **Application Monitoring**: Track MLflow server performance
+- **Cost Monitoring**: AWS Cost Explorer integration
+
+#### **Security Best Practices**
+- **Regular Updates**: Keep EC2 instances updated
+- **Access Reviews**: Regular IAM permission audits
+- **Network Security**: Security group rule optimization
+
+### **🧪 Running AWS MLflow Examples**
+
+```bash
+# Navigate to AWS MLflow directory
+cd mlflow_AWS
+
+# Activate virtual environment
+source venv/bin/activate  # Linux/Mac
+# or
+venv\Scripts\activate     # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the application
+python app.py
+
+# Access MLflow UI
+# Open browser: http://[EC2-Public-IP]:5000
+```
+
+### **🔗 Integration with Existing Workflow**
+
+The AWS MLflow setup seamlessly integrates with existing MLOps workflows:
+
+#### **Development Workflow**
+1. **Local Development** → Code and experiment locally
+2. **Remote Tracking** → Log experiments to AWS MLflow server
+3. **Artifact Storage** → Models stored in S3 automatically
+4. **Team Collaboration** → Shared access to experiments and models
+
+#### **Production Deployment**
+1. **Model Registry** → Register models in centralized registry
+2. **Model Serving** → Deploy models from S3 artifacts
+3. **Monitoring** → Track model performance in production
+4. **Continuous Integration** → Automated model updates
+
+### **💡 Advanced Features**
+
+#### **Multi-Environment Support**
+- **Development**: Separate S3 buckets and EC2 instances
+- **Staging**: Pre-production testing environment
+- **Production**: High-availability production setup
+
+#### **Auto-scaling Configuration**
+- **Application Load Balancer**: Distribute traffic across instances
+- **Auto Scaling Groups**: Automatically scale based on demand
+- **Database Backend**: RDS for production-grade tracking database
 
 ## 🗂️ DVC & DagsHub Integration
 
@@ -440,6 +716,15 @@ The DVC and DagsHub demos demonstrate how data versioning and experiment trackin
 4. **Model Deployment** → Flask applications
 5. **Monitoring** → Logging systems
 
+#### **Cloud-Enhanced MLOps Pipeline**
+1. **Data Collection** → DVC + AWS S3 storage
+2. **Data Processing** → Scalable EC2 processing
+3. **Model Training** → MLflow on AWS infrastructure
+4. **Centralized Tracking** → Remote MLflow server
+5. **Model Registry** → S3-backed artifact storage
+6. **Model Deployment** → Cloud-native deployment
+7. **Monitoring** → AWS CloudWatch integration
+
 #### **DagsHub-Enhanced MLOps Pipeline**
 1. **Data Collection** → DVC + DagsHub data versioning
 2. **Data Processing** → Reproducible DVC pipelines
@@ -457,6 +742,8 @@ By completing this course, you will:
 - ✅ Understand data analysis and visualization
 - ✅ Implement machine learning workflows
 - ✅ Track experiments with MLflow
+- ✅ Deploy MLflow on AWS cloud infrastructure
+- ✅ Configure enterprise-grade MLOps pipelines
 - ✅ Version control data with DVC
 - ✅ Deploy models using Flask
 - ✅ Follow MLOps best practices
