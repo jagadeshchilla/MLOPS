@@ -154,6 +154,14 @@ graph TD
 - **DevOps Integration**: CI/CD pipeline integration with Docker
 - **Microservices Architecture**: Scalable, containerized service deployment
 
+### 🌊 **Apache Airflow & Workflow Orchestration**
+
+- **DAG Development**: Directed Acyclic Graph workflow creation
+- **Task Scheduling**: Automated task execution and dependency management
+- **MLOps Pipeline Orchestration**: End-to-end ML workflow automation
+- **Astro CLI Integration**: Modern development and deployment tooling
+- **Monitoring & Observability**: Comprehensive workflow monitoring and alerting
+
 ### 🔬 **MLflow & Experiment Tracking**
 
 - **Experiment Tracking**: Model versioning and metrics logging
@@ -189,6 +197,10 @@ graph TD
 ### **Containerization & DevOps**
 - ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white) **Docker**
 - ![Alpine Linux](https://img.shields.io/badge/-Alpine_Linux-0D597F?style=flat-square&logo=alpine-linux&logoColor=white) **Alpine Linux**
+
+### **Workflow Orchestration**
+- ![Apache Airflow](https://img.shields.io/badge/-Apache_Airflow-017CEE?style=flat-square&logo=apache-airflow&logoColor=white) **Apache Airflow**
+- ![Astro CLI](https://img.shields.io/badge/-Astro_CLI-FF6B35?style=flat-square&logo=astronomer&logoColor=white) **Astro CLI**
 
 ### **Cloud Infrastructure**
 - ![AWS](https://img.shields.io/badge/-AWS-FF9900?style=flat-square&logo=amazon-aws&logoColor=white) **Amazon Web Services**
@@ -258,6 +270,13 @@ cd docker
 docker build -t flask-docker-demo .
 docker run -d -p 5000:5000 --name flask-app flask-docker-demo
 # Access application at: http://localhost:5000
+```
+
+### **Apache Airflow Workflows**
+```bash
+cd airflow_ASTRO
+astro dev start  # Start Airflow environment
+# Access Airflow UI at: http://localhost:8080 (admin/admin)
 ```
 
 ### **DVC Data Version Control**
@@ -1024,6 +1043,459 @@ services:
       retries: 3
 ```
 
+## 🌊 Apache Airflow & Workflow Orchestration
+
+This repository includes a comprehensive **Apache Airflow implementation** using Astro CLI, demonstrating modern workflow orchestration for MLOps pipelines. Airflow provides robust, scalable, and observable data pipeline management essential for production machine learning systems.
+
+### **🎯 What is Apache Airflow?**
+
+Apache Airflow is an **open-source platform** for developing, scheduling, and monitoring workflows. It enables you to:
+- **📊 Define Workflows as Code**: Python-based DAG (Directed Acyclic Graph) definitions
+- **⏰ Schedule Complex Pipelines**: Sophisticated scheduling with dependencies
+- **🔍 Monitor & Debug**: Rich UI for pipeline visualization and troubleshooting
+- **🔧 Extend & Customize**: Extensive plugin ecosystem and custom operators
+- **📈 Scale Horizontally**: Distributed execution across multiple workers
+
+### **🏗️ Airflow Architecture**
+
+```mermaid
+graph TB
+    subgraph "Airflow Core Components"
+        A[Web Server] --> B[Scheduler]
+        B --> C[Executor]
+        C --> D[Workers]
+        B --> E[Metadata Database]
+    end
+    
+    subgraph "DAG Execution Flow"
+        F[DAG Files] --> G[Scheduler Parsing]
+        G --> H[Task Instances]
+        H --> I[Worker Execution]
+        I --> J[Task Completion]
+    end
+    
+    subgraph "Astro CLI Environment"
+        K[Docker Containers] --> L[PostgreSQL DB]
+        K --> M[Airflow Services]
+        M --> N[Local Development]
+    end
+    
+    F --> A
+    E --> L
+    D --> K
+    
+    style B fill:#017CEE,stroke:#333,stroke-width:2px,color:#fff
+    style K fill:#FF6B35,stroke:#333,stroke-width:2px,color:#fff
+    style F fill:#4ECDC4,stroke:#333,stroke-width:2px,color:#fff
+```
+
+### **🔧 Key Components**
+
+#### **1. Web Server** 🌐
+- **Purpose**: Provides intuitive UI for workflow management
+- **Features**: DAG visualization, task monitoring, log inspection
+- **Access**: `http://localhost:8080` with admin/admin credentials
+- **Capabilities**: Trigger DAGs, view task status, debug failures
+
+#### **2. Scheduler** ⏰
+- **Purpose**: Heart of Airflow that orchestrates workflow execution
+- **Functions**: Monitors DAGs, triggers tasks based on schedules and dependencies
+- **Intelligence**: Handles complex dependency resolution and retry logic
+- **Performance**: Optimized for high-throughput pipeline execution
+
+#### **3. Executor & Workers** 👷
+- **LocalExecutor**: Single-machine task execution (our setup)
+- **CeleryExecutor**: Distributed execution across multiple workers
+- **KubernetesExecutor**: Container-based execution in Kubernetes
+- **Sequential vs Parallel**: Configurable execution patterns
+
+#### **4. Metadata Database** 🗄️
+- **Technology**: PostgreSQL running on port 5433
+- **Storage**: DAG metadata, task states, execution history
+- **Persistence**: Critical for workflow state management
+- **Backup**: Essential for production deployments
+
+### **🚀 Why Airflow for MLOps?**
+
+#### **Data Pipeline Management** 📊
+```mermaid
+graph LR
+    A[Data Sources] --> B[Extract]
+    B --> C[Transform]
+    C --> D[Load]
+    D --> E[Validate]
+    E --> F[Feature Store]
+    
+    style A fill:#e1f5fe
+    style F fill:#c8e6c9
+```
+
+- **ETL/ELT Orchestration**: Automated data extraction, transformation, and loading
+- **Data Quality Checks**: Built-in validation and monitoring
+- **Multi-source Integration**: Connect to databases, APIs, file systems
+- **Incremental Processing**: Efficient handling of large datasets
+
+#### **ML Workflow Automation** 🤖
+```mermaid
+graph TD
+    A[Data Ingestion] --> B[Data Preprocessing]
+    B --> C[Feature Engineering]
+    C --> D[Model Training]
+    D --> E[Model Validation]
+    E --> F[Model Deployment]
+    F --> G[Model Monitoring]
+    G --> H[Retraining Trigger]
+    H --> D
+    
+    style D fill:#FF6B6B,stroke:#333,stroke-width:2px,color:#fff
+    style F fill:#4ECDC4,stroke:#333,stroke-width:2px,color:#fff
+```
+
+- **Training Pipeline Automation**: End-to-end model training workflows
+- **Hyperparameter Optimization**: Automated parameter tuning pipelines
+- **Model Validation**: Comprehensive model testing and validation
+- **Deployment Automation**: Seamless model deployment to production
+
+#### **Monitoring & Observability** 👁️
+- **Pipeline Health Monitoring**: Real-time workflow status tracking
+- **Alerting & Notifications**: Automated failure notifications
+- **Performance Metrics**: Detailed execution time and resource usage
+- **Audit Trails**: Complete workflow execution history
+
+### **📁 Airflow Project Structure**
+
+```
+airflow_ASTRO/
+├── dags/                          # DAG definitions
+│   ├── mlpipeline.py             # ML workflow pipeline
+│   ├── maths_operation.py        # Mathematical operations chain
+│   └── exampledag.py             # Template example DAG
+├── plugins/                       # Custom plugins and operators
+├── include/                       # Additional Python modules
+├── tests/                         # DAG testing framework
+├── requirements.txt               # Python dependencies
+├── Dockerfile                     # Container configuration
+├── .env                          # Environment variables
+└── README.md                     # Comprehensive documentation
+```
+
+### **🧪 Implemented DAGs**
+
+#### **1. ML Pipeline DAG** 🤖
+```python
+# Workflow: Data → Model → Evaluation
+preprocess_data >> train_model >> evaluate_model
+```
+
+**Features:**
+- **Schedule**: Weekly execution (`@weekly`)
+- **Tasks**: Sequential ML pipeline stages
+- **Dependencies**: Proper task ordering and dependency management
+- **Error Handling**: Retry logic and failure notifications
+
+**Implementation:**
+```python
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from datetime import datetime, timedelta
+
+default_args = {
+    'owner': 'mlops-team',
+    'depends_on_past': False,
+    'start_date': datetime(2024, 1, 1),
+    'email_on_failure': True,
+    'email_on_retry': False,
+    'retries': 2,
+    'retry_delay': timedelta(minutes=5)
+}
+
+dag = DAG(
+    'ml_pipeline',
+    default_args=default_args,
+    description='Complete ML Pipeline',
+    schedule='@weekly',
+    catchup=False,
+    tags=['ml', 'pipeline', 'production']
+)
+```
+
+#### **2. Mathematical Operations DAG** 🔢
+```python
+# Workflow: 10 → +5 → ×2 → -3 → ^2 = 529
+start_value >> add_operation >> multiply_operation >> subtract_operation >> square_operation
+```
+
+**Features:**
+- **XCom Data Passing**: Demonstrates inter-task communication
+- **Chain Operations**: Sequential mathematical transformations
+- **Result Validation**: Output verification and logging
+
+#### **3. Advanced Features Demonstrated**
+- **Dynamic DAG Generation**: Programmatic DAG creation
+- **Custom Operators**: Domain-specific task operators
+- **Sensor Integration**: File and database sensors
+- **External System Integration**: API calls and database connections
+
+### **⚙️ Astro CLI Integration**
+
+#### **Why Astro CLI?**
+```mermaid
+graph TB
+    A[Traditional Airflow Setup] --> B[Manual Configuration]
+    B --> C[Complex Dependencies]
+    C --> D[Environment Issues]
+    
+    E[Astro CLI Setup] --> F[Zero Configuration]
+    F --> G[Docker-based Environment]
+    G --> H[Production Ready]
+    
+    style E fill:#FF6B35,stroke:#333,stroke-width:2px,color:#fff
+    style H fill:#4ECDC4,stroke:#333,stroke-width:2px,color:#fff
+```
+
+**Benefits:**
+- ✅ **Zero Configuration**: Pre-configured Airflow environment
+- ✅ **Docker Integration**: Consistent development and production environments
+- ✅ **Hot Reloading**: Immediate DAG updates during development
+- ✅ **Production Deployment**: Easy deployment to Astronomer Cloud
+- ✅ **Best Practices**: Built-in optimization and security configurations
+
+#### **Development Workflow**
+```bash
+# Initialize new Airflow project
+astro dev init
+
+# Start local development environment
+astro dev start
+
+# View running containers
+astro dev ps
+
+# Execute commands in Airflow containers
+astro dev bash
+
+# Deploy to production
+astro deploy
+```
+
+### **🔧 Configuration & Setup**
+
+#### **Environment Configuration**
+```bash
+# .env file configuration
+POSTGRES_PORT=5433              # Avoid port conflicts
+AIRFLOW_WEBSERVER_PORT=8080    # Web UI access port
+AIRFLOW__CORE__EXECUTOR=LocalExecutor
+AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql://postgres:postgres@postgres:5432/postgres
+```
+
+#### **Custom Port Configuration**
+- **PostgreSQL**: Port `5433` (avoiding conflicts with existing services)
+- **Airflow Web Server**: Port `8080` (standard web access)
+- **Flower (if enabled)**: Port `5555` (Celery monitoring)
+
+#### **Docker Compose Integration**
+```yaml
+version: '3.8'
+services:
+  postgres:
+    image: postgres:13-alpine
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
+
+  airflow-webserver:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+```
+
+### **🧪 Testing & Quality Assurance**
+
+#### **DAG Testing Framework**
+```python
+# tests/test_ml_pipeline.py
+import pytest
+from airflow.models import DagBag
+
+def test_dag_loaded():
+    """Test that ML pipeline DAG loads without errors"""
+    dag_bag = DagBag()
+    dag = dag_bag.get_dag(dag_id='ml_pipeline')
+    assert dag is not None
+    assert len(dag.tasks) == 3
+
+def test_dag_structure():
+    """Test DAG task dependencies"""
+    dag_bag = DagBag()
+    dag = dag_bag.get_dag(dag_id='ml_pipeline')
+    
+    preprocess_task = dag.get_task('preprocess_data')
+    train_task = dag.get_task('train_model')
+    evaluate_task = dag.get_task('evaluate_model')
+    
+    assert train_task in preprocess_task.downstream_list
+    assert evaluate_task in train_task.downstream_list
+```
+
+#### **Automated Testing**
+```bash
+# Run DAG tests
+astro dev test
+
+# Validate DAG syntax
+python -m py_compile dags/ml_pipeline.py
+
+# Test DAG import
+airflow dags test ml_pipeline 2024-01-01
+```
+
+### **🎯 MLOps Integration Patterns**
+
+#### **Complete MLOps Pipeline**
+```mermaid
+graph TB
+    subgraph "Data Layer"
+        A[Data Sources] --> B[Data Validation]
+        B --> C[Feature Store]
+    end
+    
+    subgraph "ML Layer"
+        D[Model Training] --> E[Model Validation]
+        E --> F[Model Registry]
+        F --> G[Model Deployment]
+    end
+    
+    subgraph "Orchestration Layer"
+        H[Airflow DAGs] --> I[Task Scheduling]
+        I --> J[Dependency Management]
+        J --> K[Monitoring & Alerting]
+    end
+    
+    C --> D
+    H --> A
+    H --> D
+    K --> A
+    
+    style H fill:#017CEE,stroke:#333,stroke-width:2px,color:#fff
+    style F fill:#FF6B6B,stroke:#333,stroke-width:2px,color:#fff
+```
+
+#### **Integration with Other Tools**
+- **MLflow Integration**: Automated experiment tracking within Airflow tasks
+- **DVC Integration**: Data version control in pipeline stages
+- **Docker Integration**: Containerized task execution
+- **Cloud Integration**: AWS, GCP, Azure operators for cloud workflows
+
+### **📊 Monitoring & Observability**
+
+#### **Built-in Monitoring**
+- **Task Duration Tracking**: Execution time analysis
+- **Success/Failure Rates**: Pipeline reliability metrics
+- **Resource Usage**: CPU, memory, and storage monitoring
+- **SLA Monitoring**: Service level agreement tracking
+
+#### **Custom Metrics**
+```python
+from airflow.providers.postgres.hooks.postgres import PostgresHook
+from airflow.models import Variable
+
+def track_pipeline_metrics(**context):
+    """Custom metrics tracking function"""
+    execution_time = context['task_instance'].duration
+    task_id = context['task_instance'].task_id
+    
+    # Log to external monitoring system
+    metrics = {
+        'task_id': task_id,
+        'execution_time': execution_time,
+        'timestamp': context['execution_date']
+    }
+    
+    # Send to monitoring dashboard
+    send_to_monitoring_system(metrics)
+```
+
+#### **Alerting Configuration**
+```python
+default_args = {
+    'email': ['mlops-team@company.com'],
+    'email_on_failure': True,
+    'email_on_retry': False,
+    'on_failure_callback': slack_notification,
+    'on_success_callback': success_notification
+}
+```
+
+### **🚀 Production Deployment**
+
+#### **Deployment Strategies**
+- **Astronomer Cloud**: Managed Airflow service
+- **Self-hosted**: Custom Kubernetes deployment
+- **Cloud Providers**: AWS MWAA, Google Cloud Composer
+- **Hybrid**: On-premises with cloud integration
+
+#### **Production Best Practices**
+- **Resource Management**: Proper CPU and memory allocation
+- **Security**: RBAC, encryption, and secret management
+- **Backup & Recovery**: Database and DAG file backups
+- **Monitoring**: Comprehensive observability stack
+- **Scaling**: Auto-scaling workers based on load
+
+### **🔧 Troubleshooting & Common Issues**
+
+#### **Port Conflicts Resolution**
+```bash
+# Issue: Port 5432 already in use
+# Solution: Custom port configuration
+POSTGRES_PORT=5433
+```
+
+#### **Import Error Fixes**
+```python
+# Old (deprecated):
+from airflow.operators.python_operator import PythonOperator
+
+# New (correct):
+from airflow.operators.python import PythonOperator
+```
+
+#### **Schedule Parameter Updates**
+```python
+# Old (deprecated):
+schedule_interval='@weekly'
+
+# New (correct):
+schedule='@weekly'
+```
+
+### **📚 Learning Path**
+
+#### **Beginner Level**
+1. **DAG Basics**: Understanding DAG structure and syntax
+2. **Task Types**: Python, Bash, and SQL operators
+3. **Scheduling**: Cron expressions and preset schedules
+4. **Dependencies**: Task relationships and execution order
+
+#### **Intermediate Level**
+1. **XCom**: Inter-task communication and data passing
+2. **Sensors**: File, database, and API sensors
+3. **Branching**: Conditional workflow execution
+4. **Custom Operators**: Building domain-specific operators
+
+#### **Advanced Level**
+1. **Dynamic DAGs**: Programmatic DAG generation
+2. **Scaling**: Multi-worker and distributed execution
+3. **Security**: RBAC, connections, and secret management
+4. **Performance**: Optimization and resource management
+
 ## 🎓 Learning Outcomes
 
 By completing this course, you will:
@@ -1036,6 +1508,7 @@ By completing this course, you will:
 - ✅ Configure enterprise-grade MLOps pipelines
 - ✅ Version control data with DVC
 - ✅ Containerize applications with Docker
+- ✅ Orchestrate workflows with Apache Airflow
 - ✅ Deploy models using Flask
 - ✅ Follow MLOps best practices
 - ✅ Build end-to-end ML pipelines
