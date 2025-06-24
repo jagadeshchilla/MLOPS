@@ -277,6 +277,12 @@ docker run -d -p 5000:5000 --name flask-app flask-docker-demo
 cd airflow_ASTRO
 astro dev start  # Start Airflow environment
 # Access Airflow UI at: http://localhost:8080 (admin/admin)
+
+# NASA APOD ETL Pipeline (Real-world project)
+git clone https://github.com/jagadeshchilla/NASA-APOD-ETL-Pipeline-with-Apache-Airflow.git
+cd NASA-APOD-ETL-Pipeline-with-Apache-Airflow
+docker-compose up -d
+# Access at: http://localhost:8080
 ```
 
 ### **DVC Data Version Control**
@@ -1230,11 +1236,140 @@ start_value >> add_operation >> multiply_operation >> subtract_operation >> squa
 - **Chain Operations**: Sequential mathematical transformations
 - **Result Validation**: Output verification and logging
 
-#### **3. Advanced Features Demonstrated**
+#### **3. NASA APOD ETL Pipeline DAG** 🌌
+```python
+# Workflow: Extract → Transform → Load
+extract_nasa_data >> transform_data >> load_to_postgres
+```
+
+**Real-World ETL Implementation:**
+This production-ready ETL pipeline demonstrates advanced Airflow capabilities by integrating with NASA's Astronomy Picture of the Day API and PostgreSQL database.
+
+**Pipeline Architecture:**
+```mermaid
+graph TB
+    A[NASA APOD API] -->|HTTP Request| B[Extract Task]
+    B -->|Raw JSON Data| C[Transform Task]
+    C -->|Cleaned Data| D[Load Task]
+    D -->|Insert/Update| E[PostgreSQL Database]
+    
+    F[Airflow Scheduler] -->|Daily Trigger| B
+    G[Error Handling] -->|Retry Logic| B
+    G -->|Retry Logic| C
+    G -->|Retry Logic| D
+    
+    style A fill:#0B3D91,color:#fff
+    style E fill:#316192,color:#fff
+    style B fill:#017CEE,color:#fff
+    style F fill:#FF6B35,color:#fff
+```
+
+**Key Features:**
+- **🌐 External API Integration**: NASA Astronomy Picture of the Day API
+- **🗄️ Database Operations**: PostgreSQL connection and data persistence
+- **📅 Scheduled Execution**: Daily automated data extraction
+- **🔄 ETL Workflow**: Complete Extract, Transform, Load pipeline
+- **🛡️ Error Handling**: Comprehensive retry mechanisms and validation
+- **📊 Data Schema**: Structured storage with proper data types
+
+**Implementation Details:**
+```python
+from airflow import DAG
+from airflow.operators.http import SimpleHttpOperator
+from airflow.operators.python import PythonOperator
+from airflow.providers.postgres.operators.postgres import PostgresOperator
+from airflow.providers.postgres.hooks.postgres import PostgresHook
+
+# Extract Task - NASA API Call
+extract_apod_data = SimpleHttpOperator(
+    task_id='extract_nasa_apod',
+    http_conn_id='nasa_api',
+    endpoint='planetary/apod',
+    method='GET',
+    data={'api_key': '{{ conn.nasa_api.extra_dejson.api_key }}'},
+    xcom_push=True,
+    dag=dag
+)
+
+# Transform Task - Data Processing
+def transform_apod_data(**context):
+    """Transform NASA APOD data for database storage"""
+    raw_data = context['task_instance'].xcom_pull(task_ids='extract_nasa_apod')
+    
+    transformed_data = {
+        'title': raw_data.get('title', ''),
+        'explanation': raw_data.get('explanation', ''),
+        'url': raw_data.get('url', ''),
+        'date': raw_data.get('date', ''),
+        'media_type': raw_data.get('media_type', 'image')
+    }
+    
+    return transformed_data
+
+transform_data = PythonOperator(
+    task_id='transform_apod_data',
+    python_callable=transform_apod_data,
+    dag=dag
+)
+
+# Load Task - Database Insert
+def load_to_postgres(**context):
+    """Load transformed data into PostgreSQL"""
+    data = context['task_instance'].xcom_pull(task_ids='transform_apod_data')
+    
+    postgres_hook = PostgresHook(postgres_conn_id='my_postgres_connection')
+    
+    insert_sql = """
+    INSERT INTO apod_data (title, explanation, url, date, media_type)
+    VALUES (%s, %s, %s, %s, %s)
+    ON CONFLICT (date) DO UPDATE SET
+        title = EXCLUDED.title,
+        explanation = EXCLUDED.explanation,
+        url = EXCLUDED.url,
+        media_type = EXCLUDED.media_type;
+    """
+    
+    postgres_hook.run(insert_sql, parameters=[
+        data['title'], data['explanation'], data['url'], 
+        data['date'], data['media_type']
+    ])
+
+load_data = PythonOperator(
+    task_id='load_to_postgres',
+    python_callable=load_to_postgres,
+    dag=dag
+)
+
+# Define task dependencies
+extract_apod_data >> transform_data >> load_data
+```
+
+**Database Schema:**
+```sql
+CREATE TABLE IF NOT EXISTS apod_data (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    explanation TEXT,
+    url TEXT,
+    date DATE UNIQUE,
+    media_type VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+**Production Features:**
+- **🔐 Secure API Authentication**: NASA API key management
+- **🔄 Idempotent Operations**: Handles duplicate data gracefully
+- **📈 Monitoring**: Comprehensive logging and error tracking
+- **⚡ Performance**: Optimized database operations
+- **🛡️ Data Validation**: Input validation and error handling
+
+#### **4. Advanced Features Demonstrated**
 - **Dynamic DAG Generation**: Programmatic DAG creation
 - **Custom Operators**: Domain-specific task operators
 - **Sensor Integration**: File and database sensors
 - **External System Integration**: API calls and database connections
+- **Real-world ETL**: Production-ready data pipeline implementation
 
 ### **⚙️ Astro CLI Integration**
 
@@ -1495,6 +1630,200 @@ schedule='@weekly'
 2. **Scaling**: Multi-worker and distributed execution
 3. **Security**: RBAC, connections, and secret management
 4. **Performance**: Optimization and resource management
+
+### **🌌 Real-World Project: NASA APOD ETL Pipeline**
+
+This repository includes a complete **production-ready ETL pipeline** that demonstrates Apache Airflow's capabilities in a real-world scenario. The project showcases advanced data engineering practices by building an automated pipeline that extracts astronomical data from NASA's API.
+
+#### **🚀 Project Overview**
+
+The [NASA APOD ETL Pipeline](https://github.com/jagadeshchilla/NASA-APOD-ETL-Pipeline-with-Apache-Airflow) is a comprehensive data engineering project that implements:
+
+- **🌐 External API Integration**: NASA Astronomy Picture of the Day API
+- **🔄 Complete ETL Workflow**: Extract, Transform, Load operations
+- **🗄️ Database Management**: PostgreSQL integration with schema design
+- **📅 Automated Scheduling**: Daily data extraction and processing
+- **🐳 Containerized Deployment**: Docker and Docker Compose setup
+- **☁️ Cloud-Ready Architecture**: AWS RDS and Astro deployment ready
+
+#### **🏗️ Technical Architecture**
+
+```mermaid
+graph TB
+    subgraph "Data Sources"
+        A[NASA APOD API] --> B[Daily Astronomy Data]
+    end
+    
+    subgraph "Airflow ETL Pipeline"
+        C[HTTP Operator] --> D[Extract Task]
+        D --> E[Transform Task]
+        E --> F[Load Task]
+        F --> G[PostgreSQL Hook]
+    end
+    
+    subgraph "Data Storage"
+        H[PostgreSQL Database] --> I[APOD Data Table]
+        I --> J[Structured Schema]
+    end
+    
+    subgraph "Infrastructure"
+        K[Docker Compose] --> L[Airflow Services]
+        K --> M[PostgreSQL Container]
+        L --> N[Web Server]
+        L --> O[Scheduler]
+        L --> P[Workers]
+    end
+    
+    A --> C
+    G --> H
+    K --> C
+    
+    style A fill:#0B3D91,color:#fff
+    style H fill:#316192,color:#fff
+    style C fill:#017CEE,color:#fff
+    style K fill:#2CA5E0,color:#fff
+```
+
+#### **📊 ETL Pipeline Workflow**
+
+**1. Extract Phase** 🌐
+- Connects to NASA APOD API using `SimpleHttpOperator`
+- Retrieves daily astronomy picture data in JSON format
+- Handles API authentication with secure key management
+- Implements rate limiting and error handling
+
+**2. Transform Phase** 🔄
+- Processes raw JSON response from NASA API
+- Extracts relevant fields: `title`, `explanation`, `url`, `date`, `media_type`
+- Validates data types and formats
+- Cleans and standardizes data for database storage
+
+**3. Load Phase** 📥
+- Creates PostgreSQL table schema if not exists
+- Inserts transformed data using `PostgresHook`
+- Implements upsert operations to handle duplicates
+- Maintains data integrity with proper constraints
+
+#### **🛠️ Technology Stack**
+
+| Component | Technology | Purpose |
+|-----------|------------|---------|
+| **Orchestration** | Apache Airflow 2.8+ | Workflow management and scheduling |
+| **Database** | PostgreSQL 13+ | Data storage and persistence |
+| **Containerization** | Docker & Docker Compose | Environment management |
+| **API Integration** | NASA APOD API | External data source |
+| **Language** | Python 3.8+ | ETL logic implementation |
+| **Cloud Database** | AWS RDS (Optional) | Managed database service |
+| **Deployment** | Astro CLI (Optional) | Cloud Airflow deployment |
+
+#### **📁 Project Structure**
+
+```
+NASA-APOD-ETL-Pipeline/
+├── dags/
+│   └── etl.py                 # Main ETL DAG definition
+├── include/                   # Additional utilities and modules
+├── plugins/                   # Custom Airflow plugins
+├── tests/
+│   └── dags/
+│       └── test_dag_example.py # DAG testing framework
+├── docker-compose.yml         # Docker services configuration
+├── Dockerfile                 # Custom Airflow image
+├── requirements.txt           # Python dependencies
+├── packages.txt              # System packages
+└── README.md                 # Comprehensive documentation
+```
+
+#### **🔧 Key Features Implemented**
+
+**Database Schema Design:**
+```sql
+CREATE TABLE IF NOT EXISTS apod_data (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    explanation TEXT,
+    url TEXT NOT NULL,
+    date DATE UNIQUE NOT NULL,
+    media_type VARCHAR(50),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+**Connection Management:**
+- **NASA API Connection**: Secure API key storage and management
+- **PostgreSQL Connection**: Database connection pooling and configuration
+- **Environment Variables**: Secure configuration management
+
+**Error Handling & Monitoring:**
+- **Retry Logic**: Configurable retry mechanisms for failed tasks
+- **Data Validation**: Input validation and data quality checks
+- **Logging**: Comprehensive logging for debugging and monitoring
+- **Alerting**: Email and Slack notifications for pipeline failures
+
+#### **🚀 Getting Started**
+
+**Prerequisites:**
+- Docker and Docker Compose installed
+- NASA API key (free from [NASA API Portal](https://api.nasa.gov/))
+
+**Quick Setup:**
+```bash
+# Clone the repository
+git clone https://github.com/jagadeshchilla/NASA-APOD-ETL-Pipeline-with-Apache-Airflow.git
+cd NASA-APOD-ETL-Pipeline-with-Apache-Airflow
+
+# Start the services
+docker-compose up -d
+
+# Access Airflow UI
+open http://localhost:8080
+# Login: admin / admin
+```
+
+**Configuration:**
+1. **NASA API Connection**: Add your NASA API key in Airflow connections
+2. **PostgreSQL Connection**: Configure database connection parameters
+3. **Enable DAG**: Activate the `nasa_apod_postgres` DAG
+4. **Monitor Execution**: Track pipeline execution in Airflow UI
+
+#### **📈 Production Deployment**
+
+**Local Development:**
+- Docker Compose setup for local testing
+- PostgreSQL container for development database
+- Hot reloading for DAG development
+
+**Cloud Deployment Options:**
+- **AWS**: Deploy to AWS MWAA with RDS PostgreSQL
+- **Astro**: Deploy using Astronomer's managed Airflow service
+- **GCP**: Deploy to Google Cloud Composer
+- **Azure**: Deploy to Azure Data Factory with Airflow
+
+#### **💡 Learning Outcomes**
+
+This project demonstrates:
+- ✅ **Real-world ETL Implementation**: Production-ready data pipeline
+- ✅ **API Integration**: External service connectivity and authentication
+- ✅ **Database Operations**: Schema design and data persistence
+- ✅ **Error Handling**: Robust error management and recovery
+- ✅ **Containerization**: Docker-based deployment strategies
+- ✅ **Monitoring**: Pipeline observability and alerting
+- ✅ **Cloud Readiness**: Scalable cloud deployment architecture
+
+#### **🔗 Repository Access**
+
+**GitHub Repository**: [NASA APOD ETL Pipeline with Apache Airflow](https://github.com/jagadeshchilla/NASA-APOD-ETL-Pipeline-with-Apache-Airflow)
+
+**Repository Features:**
+- 📚 Comprehensive documentation and setup guides
+- 🧪 Complete DAG implementation with best practices
+- 🐳 Docker Compose configuration for easy deployment
+- 🔧 Configuration templates and examples
+- 📊 Database schema and migration scripts
+- 🧪 Testing framework for DAG validation
+
+This project serves as an excellent example of how Apache Airflow can be used to build robust, scalable, and maintainable data pipelines for real-world applications.
 
 ## 🎓 Learning Outcomes
 
