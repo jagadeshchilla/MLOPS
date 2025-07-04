@@ -1,0 +1,4 @@
+psycopg2
+faker
+pandas
+python-dotenv
