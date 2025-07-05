@@ -101,7 +101,7 @@ graph TD
     X --> Y[Amazon Bedrock - GenAI]
 ```
 
-## 🚀 Quick Start
+## 🚀 Updated Quick Start
 
 1. **Clone the repository:**
    ```bash
@@ -111,8 +111,9 @@ graph TD
 
 2. **Set up virtual environment:**
    ```bash
-   python -m venv mlops-env
-   source mlops-env/bin/activate  # On Windows: mlops-env\Scripts\activate
+   python -m venv venv
+   source venv/bin/activate  
+   venv\Scripts\activate
    ```
 
 3. **Install dependencies:**
@@ -200,10 +201,41 @@ graph TD
 
 ### 🔬 **MLflow & Experiment Tracking**
 
-- **Experiment Tracking**: Model versioning and metrics logging
-- **Model Registry**: Centralized model management
-- **Deployment**: Model serving and monitoring
-- **Hyperparameter Tuning**: Automated optimization workflows
+- **Experiment Tracking**: Model versioning and metrics logging  
+- **Model Registry**: Centralized model management  
+- **Deployment**: Model serving and monitoring  
+- **Hyperparameter Tuning**: Automated optimization workflows  
+
+
+### 📂 **Data Version Control (DVC)**
+
+- **DVC Init & Setup**: Track large data files and models  
+- **Data Pipelines**: Automate preprocessing and training steps  
+- **Versioning**: Manage dataset/model history like Git  
+- **Remote Storage**: Push/pull from S3, GDrive, or DagsHub  
+
+### 🌐 **DagsHub Integration**
+
+- **End-to-End MLOps Platform**: Combines Git, DVC, MLflow  
+- **Experiment Logging**: Track experiments on DagsHub via MLflow  
+- **Collaboration**: Share datasets, models, and runs  
+- **Visualization**: View lineage, metrics, and model artifacts  
+
+
+### ☁️ **Cloud Deployments (AWS & Azure)**
+
+- **AWS EC2 + S3**: Host MLflow tracking server, manage artifacts  
+- **Elastic Beanstalk**: Deploy production-ready ML web apps  
+- **Azure App Services**: Cross-cloud deployment of Flask/API apps  
+- **CodePipeline & IAM**: CI/CD automation and role-based security  
+
+
+### 📊 **Grafana Monitoring Integration**
+
+- **Real-time Dashboarding**: Monitor training logs, system metrics  
+- **Custom Alerts**: Track data drift, performance, and failures  
+- **CloudWatch + Grafana**: Unified AWS observability  
+- **ML Model Monitoring**: Visualize accuracy, latency, loss over time  
 
 ## 🔧 Tools & Technologies
 
@@ -219,11 +251,13 @@ graph TD
 - ![Seaborn](https://img.shields.io/badge/-Seaborn-3776AB?style=flat-square) **Seaborn**
 
 ### **Machine Learning & MLOps**
-- ![scikit-learn](https://img.shields.io/badge/-Scikit--Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white) **Scikit-learn**
+- ![Scikit-learn](https://img.shields.io/badge/-Scikit--Learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white) **Scikit-learn**
 - ![MLflow](https://img.shields.io/badge/-MLflow-0194E2?style=flat-square&logo=mlflow&logoColor=white) **MLflow**
 - ![DVC](https://img.shields.io/badge/-DVC-945DD6?style=flat-square&logo=dvc&logoColor=white) **DVC**
+- ![Dagshub](https://img.shields.io/badge/-Dagshub-FF00AA?style=flat-square&logo=dagshub&logoColor=white) **DagsHub**
 - ![TensorFlow](https://img.shields.io/badge/-TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white) **TensorFlow**
 - ![Keras](https://img.shields.io/badge/-Keras-D00000?style=flat-square&logo=keras&logoColor=white) **Keras**
+- ![Hugging Face](https://img.shields.io/badge/-HuggingFace-FFD21F?style=flat-square&logo=hugging-face&logoColor=black) **Hugging Face**
 
 ### **Web Development**
 - ![Flask](https://img.shields.io/badge/-Flask-000000?style=flat-square&logo=flask&logoColor=white) **Flask**
@@ -238,8 +272,9 @@ graph TD
 - ![Apache Airflow](https://img.shields.io/badge/-Apache_Airflow-017CEE?style=flat-square&logo=apache-airflow&logoColor=white) **Apache Airflow**
 - ![Astro CLI](https://img.shields.io/badge/-Astro_CLI-FF6B35?style=flat-square&logo=astronomer&logoColor=white) **Astro CLI**
 
-### **CI/CD & DevOps**
+### **CI/CD & Automation**
 - ![GitHub Actions](https://img.shields.io/badge/-GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white) **GitHub Actions**
+- ![CodePipeline](https://img.shields.io/badge/-AWS_CodePipeline-FF4F00?style=flat-square&logo=aws-codepipeline&logoColor=white) **AWS CodePipeline**
 - ![Pytest](https://img.shields.io/badge/-Pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white) **Pytest**
 - ![Code Quality](https://img.shields.io/badge/-Code_Quality-FF6B6B?style=flat-square&logo=codeclimate&logoColor=white) **Automated Quality Gates**
 
@@ -247,8 +282,18 @@ graph TD
 - ![AWS](https://img.shields.io/badge/-AWS-FF9900?style=flat-square&logo=amazon-aws&logoColor=white) **Amazon Web Services**
 - ![EC2](https://img.shields.io/badge/-EC2-FF9900?style=flat-square&logo=amazon-ec2&logoColor=white) **Elastic Compute Cloud**
 - ![S3](https://img.shields.io/badge/-S3-569A31?style=flat-square&logo=amazon-s3&logoColor=white) **Simple Storage Service**
+- ![RDS](https://img.shields.io/badge/-RDS-527FFF?style=flat-square&logo=amazon-rds&logoColor=white) **Relational Database Service**
+- ![ECR](https://img.shields.io/badge/-ECR-orange?style=flat-square&logo=amazon-aws&logoColor=white) **Elastic Container Registry**
+- ![Elastic Beanstalk](https://img.shields.io/badge/-Elastic_Beanstalk-34A853?style=flat-square&logo=awslambda&logoColor=white) **Elastic Beanstalk**
 - ![SageMaker](https://img.shields.io/badge/-SageMaker-FF9900?style=flat-square&logo=amazon-aws&logoColor=white) **Machine Learning Platform**
 - ![IAM](https://img.shields.io/badge/-IAM-FF9900?style=flat-square&logo=amazon-aws&logoColor=white) **Identity & Access Management**
+- ![Bedrock](https://img.shields.io/badge/-Amazon_Bedrock-FF9900?style=flat-square&logo=amazon-aws&logoColor=white) **Amazon Bedrock**
+- ![Azure](https://img.shields.io/badge/-Azure-0078D4?style=flat-square&logo=microsoft-azure&logoColor=white) **Microsoft Azure**
+
+### **Databases & Monitoring**
+- ![MySQL](https://img.shields.io/badge/-MySQL-00758F?style=flat-square&logo=mysql&logoColor=white) **MySQL**
+- ![Grafana](https://img.shields.io/badge/-Grafana-F46800?style=flat-square&logo=grafana&logoColor=white) **Grafana**
+
 
 ## 💻 Installation
 
