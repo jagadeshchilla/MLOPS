@@ -8,16 +8,27 @@
 [![NumPy](https://img.shields.io/badge/NumPy-1.24%2B-blue?style=for-the-badge&logo=numpy&logoColor=white)](https://numpy.org)
 [![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.3%2B-red?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org)
 [![DVC](https://img.shields.io/badge/DVC-Data%20Version%20Control-blue?style=for-the-badge&logo=dvc&logoColor=white)](https://dvc.org)
-[![AWS](https://img.shields.io/badge/AWS-Cloud%20Platform-orange?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com)
-[![EC2](https://img.shields.io/badge/EC2-Compute%20Cloud-ff9900?style=for-the-badge&logo=amazon-ec2&logoColor=white)](https://aws.amazon.com/ec2/)
-[![S3](https://img.shields.io/badge/S3-Object%20Storage-569A31?style=for-the-badge&logo=amazon-s3&logoColor=white)](https://aws.amazon.com/s3/)
-[![SageMaker](https://img.shields.io/badge/AWS-SageMaker-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/sagemaker/)
-[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
+
+[![Docker](https://img.shields.io/badge/Docker-Containerization-blue?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com)
+[![Apache Airflow](https://img.shields.io/badge/Airflow-Orchestration-darkblue?style=for-the-badge&logo=apache-airflow&logoColor=white)](https://airflow.apache.org/)
+[![Dagshub](https://img.shields.io/badge/Dagshub-Data%20Science%20Collaboration-purple?style=for-the-badge&logo=dagshub&logoColor=white)](https://dagshub.com/)
+[![MySQL](https://img.shields.io/badge/MySQL-Database-00758F?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+
+[![AWS](https://img.shields.io/badge/AWS-Cloud-orange?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com)
+[![EC2](https://img.shields.io/badge/EC2-Compute-ff9900?style=for-the-badge&logo=amazon-ec2&logoColor=white)](https://aws.amazon.com/ec2/)
+[![S3](https://img.shields.io/badge/S3-Storage-569A31?style=for-the-badge&logo=amazon-s3&logoColor=white)](https://aws.amazon.com/s3/)
+[![RDS](https://img.shields.io/badge/RDS-Database-527FFF?style=for-the-badge&logo=amazon-rds&logoColor=white)](https://aws.amazon.com/rds/)
+[![ECR](https://img.shields.io/badge/ECR-Container%20Registry-orange?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/ecr/)
+[![Elastic Beanstalk](https://img.shields.io/badge/Elastic%20Beanstalk-App%20Hosting-green?style=for-the-badge&logo=awslambda&logoColor=white)](https://aws.amazon.com/elasticbeanstalk/)
+[![CodePipeline](https://img.shields.io/badge/CodePipeline-CI/CD-FF4F00?style=for-the-badge&logo=aws-codepipeline&logoColor=white)](https://aws.amazon.com/codepipeline/)
+[![Bedrock](https://img.shields.io/badge/Amazon%20Bedrock-GenAI-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/bedrock/)
+[![SageMaker](https://img.shields.io/badge/SageMaker-ML%20Platform-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/sagemaker/)
+
+[![Azure](https://img.shields.io/badge/Microsoft%20Azure-Cloud-blue?style=for-the-badge&logo=microsoft-azure&logoColor=white)](https://azure.microsoft.com)
+
+[![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-Automation-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)](https://github.com/features/actions)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-Pipeline-brightgreen?style=for-the-badge&logo=githubactions&logoColor=white)](https://github.com/features/actions)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](http://makeapullrequest.com)
-[![GitHub stars](https://img.shields.io/github/stars/jagadeshchilla/MLOPS?style=for-the-badge)](https://github.com/jagadeshchilla/MLOPS/stargazers)
 
 > **A comprehensive MLOps learning repository covering Python fundamentals to advanced machine learning operations, experiment tracking, and deployment strategies.**
 
@@ -60,7 +71,6 @@ This repository serves as a complete learning resource for **Machine Learning Op
 - Basic knowledge of machine learning concepts (helpful but not required)
 
 ## 📚 Learning Path
-
 ```mermaid
 graph TD
     A[Python Basics] --> B[Control Flow]
@@ -78,7 +88,33 @@ graph TD
     M --> N[MLflow on AWS Cloud]
     N --> O[AWS SageMaker]
     O --> P[DVC & Data Version Control]
-    P --> Q[GitHub Actions CI/CD]
+    P --> Q[Dagshub Integration]
+    Q --> R[AWS EC2 + S3 Deployment]
+    R --> S[Docker Containerization]
+    S --> T[Apache Airflow Orchestration]
+    T --> U[GitHub Actions CI/CD]
+    U --> V[AWS Elastic Beanstalk Deployment]
+    V --> W[Azure Cloud Deployment]
+    W --> X[Hugging Face Integration & Fine-Tuning]
+    X --> Y[Grafana Monitoring Integration]
+    Y --> Z[Amazon Bedrock - Generative AI]
+
+    style A fill:#FFC107,stroke:#333,stroke-width:2px
+    style M fill:#42A5F5,stroke:#333,stroke-width:2px
+    style N fill:#039BE5,stroke:#333,stroke-width:2px
+    style O fill:#F57C00,stroke:#333,stroke-width:2px
+    style P fill:#7E57C2,stroke:#333,stroke-width:2px
+    style Q fill:#9C27B0,stroke:#333,stroke-width:2px
+    style R fill:#FF9800,stroke:#333,stroke-width:2px
+    style S fill:#26C6DA,stroke:#333,stroke-width:2px
+    style T fill:#66BB6A,stroke:#333,stroke-width:2px
+    style U fill:#EF5350,stroke:#333,stroke-width:2px
+    style V fill:#8D6E63,stroke:#333,stroke-width:2px
+    style W fill:#1976D2,stroke:#fff,stroke-width:2px
+    style X fill:#AB47BC,stroke:#333,stroke-width:2px
+    style Y fill:#5C6BC0,stroke:#333,stroke-width:2px
+    style Z fill:#FF7043,stroke:#333,stroke-width:2px
+    style Z fill:#FF7043,stroke:#333,stroke-width:2px
 ```
 
 ## 🚀 Quick Start
