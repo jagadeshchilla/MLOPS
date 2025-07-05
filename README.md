@@ -71,6 +71,8 @@ This repository serves as a complete learning resource for **Machine Learning Op
 - Basic knowledge of machine learning concepts (helpful but not required)
 
 ## 📚 Learning Path
+## 📚 Updated Learning Path
+
 ```mermaid
 graph TD
     A[Python Basics] --> B[Control Flow]
@@ -86,35 +88,17 @@ graph TD
     K --> L[Flask Web Development]
     L --> M[MLflow & Experiment Tracking]
     M --> N[MLflow on AWS Cloud]
-    N --> O[AWS SageMaker]
-    O --> P[DVC & Data Version Control]
-    P --> Q[Dagshub Integration]
-    Q --> R[AWS EC2 + S3 Deployment]
-    R --> S[Docker Containerization]
-    S --> T[Apache Airflow Orchestration]
-    T --> U[GitHub Actions CI/CD]
-    U --> V[AWS Elastic Beanstalk Deployment]
-    V --> W[Azure Cloud Deployment]
-    W --> X[Hugging Face Integration & Fine-Tuning]
-    X --> Y[Grafana Monitoring Integration]
-    Y --> Z[Amazon Bedrock - Generative AI]
-
-    style A fill:#FFC107,stroke:#333,stroke-width:2px
-    style M fill:#42A5F5,stroke:#333,stroke-width:2px
-    style N fill:#039BE5,stroke:#333,stroke-width:2px
-    style O fill:#F57C00,stroke:#333,stroke-width:2px
-    style P fill:#7E57C2,stroke:#333,stroke-width:2px
-    style Q fill:#9C27B0,stroke:#333,stroke-width:2px
-    style R fill:#FF9800,stroke:#333,stroke-width:2px
-    style S fill:#26C6DA,stroke:#333,stroke-width:2px
-    style T fill:#66BB6A,stroke:#333,stroke-width:2px
-    style U fill:#EF5350,stroke:#333,stroke-width:2px
-    style V fill:#8D6E63,stroke:#333,stroke-width:2px
-    style W fill:#1976D2,stroke:#fff,stroke-width:2px
-    style X fill:#AB47BC,stroke:#333,stroke-width:2px
-    style Y fill:#5C6BC0,stroke:#333,stroke-width:2px
-    style Z fill:#FF7043,stroke:#333,stroke-width:2px
-    style Z fill:#FF7043,stroke:#333,stroke-width:2px
+    N --> O[DVC - Data Version Control]
+    O --> P[Dagshub Integration]
+    P --> Q[AWS EC2 + S3 Deployment]
+    Q --> R[Docker Containerization]
+    R --> S[Apache Airflow Workflows]
+    S --> T[GitHub Actions CI/CD]
+    T --> U[AWS Beanstalk + Azure Deployment]
+    U --> V[Hugging Face Integration & Fine-Tuning]
+    V --> W[AWS SageMaker Pipeline]
+    W --> X[Grafana for Monitoring]
+    X --> Y[Amazon Bedrock - GenAI]
 ```
 
 ## 🚀 Quick Start
