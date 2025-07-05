@@ -1,9 +1,5 @@
 # 📊 DVC: Data Version Control
 
-![DVC](https://img.shields.io/badge/DVC-Data%20Version%20Control-blue?style=for-the-badge&logo=dvc&logoColor=white)
-![MLOps](https://img.shields.io/badge/MLOps-Data%20Pipeline-green?style=for-the-badge)
-![Difficulty](https://img.shields.io/badge/Difficulty-Advanced-red?style=for-the-badge)
-
 ## 📖 Overview
 
 This module introduces Data Version Control (DVC), an essential tool for MLOps workflows. Learn to version datasets, track experiments, build reproducible pipelines, and collaborate effectively on machine learning projects.
@@ -506,13 +502,6 @@ jobs:
         dvc plots show
 ```
 
-## 🧪 Hands-On Activities
-
-1. **Version a dataset**: Practice with different data versions
-2. **Build ML pipeline**: Create complete training pipeline
-3. **Experiment tracking**: Compare multiple model versions
-4. **Team collaboration**: Share data across team members
-
 ## 🔍 Key Commands Reference
 
 ```bash
@@ -547,46 +536,3 @@ dvc remote list            # List remotes
 dvc remote modify          # Modify remote settings
 ```
 
-## 🌟 Best Practices
-
-1. **Structure your project**: Organize data, scripts, and outputs clearly
-2. **Use parameters**: Keep hyperparameters in separate YAML files
-3. **Version everything**: Track data, code, and model versions together
-4. **Small commits**: Make frequent, small commits for better tracking
-5. **Document pipelines**: Add clear descriptions to pipeline stages
-6. **Remote storage**: Always use remote storage for team collaboration
-
-## 📝 Assignment Checklist
-
-- [ ] Set up DVC in a new project
-- [ ] Track datasets with DVC
-- [ ] Configure remote storage
-- [ ] Create a data processing pipeline
-- [ ] Track model training experiments
-- [ ] Compare different model versions
-- [ ] Integrate with Git workflow
-- [ ] Collaborate on a team project
-
-## 🆘 Common Issues & Solutions
-
-| Issue | Solution |
-|-------|----------|
-| `dvc pull` fails | Check remote configuration and credentials |
-| Pipeline not reproducing | Verify dependencies and parameters are correct |
-| Large files in Git | Ensure `.gitignore` is properly configured |
-| Remote access denied | Check permissions and authentication |
-| Pipeline stages skipped | Check if outputs already exist and are up-to-date |
-
-## 🏆 Challenge Projects
-
-1. **Complete MLOps Pipeline**: End-to-end ML project with DVC
-2. **Multi-Team Data Sharing**: Data registry for multiple teams
-3. **A/B Testing Framework**: Compare model versions systematically
-4. **Automated Retraining**: Pipeline that triggers on data changes
-5. **Model Deployment Pipeline**: Production deployment with version control
-
----
-
-**DVC: Your Data Needs Version Control Too! 📊**
-
-*Master DVC to build reproducible, collaborative, and scalable ML workflows!* 
