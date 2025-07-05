@@ -1,11 +1,4 @@
 # 📱 Mobile Price Classification with AWS SageMaker
-
-[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![AWS SageMaker](https://img.shields.io/badge/AWS-SageMaker-orange.svg)](https://aws.amazon.com/sagemaker/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.0+-green.svg)](https://scikit-learn.org/)
-[![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)](https://jupyter.org/)
-[![Status](https://img.shields.io/badge/Status-Production%20Ready-brightgreen.svg)]()
-
 > A complete machine learning pipeline for mobile phone price classification using AWS SageMaker, achieving 88.33% accuracy with Random Forest classifier.
 
 ## 🎯 Project Overview
@@ -30,7 +23,7 @@ This project demonstrates a complete end-to-end machine learning workflow on AWS
 | **Price Range 0** | 95% precision, 100% recall |
 | **Price Range 3** | 91% precision, 95% recall |
 
-## 🏗️ Architecture
+##  Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -276,13 +269,11 @@ predictor = model.deploy(
 
 After completing this project, you'll understand:
 
-- ✅ **AWS SageMaker**: Complete ML workflow on cloud
-- ✅ **MLOps**: Production-ready model deployment
-- ✅ **Security**: AWS credential and permission management
-- ✅ **Scalability**: Cloud-native ML architecture
-- ✅ **Cost Management**: Optimizing AWS resources
-
-## 🔧 Troubleshooting
+- **AWS SageMaker**: Complete ML workflow on cloud
+- **MLOps**: Production-ready model deployment
+- **Security**: AWS credential and permission management
+- **Scalability**: Cloud-native ML architecture
+- ✅**Cost Management**: Optimizing AWS resources
 
 ### Common Issues
 
@@ -313,10 +304,3 @@ After completing this project, you'll understand:
 
 ---
 
-<div align="center">
-
-**🎯 Ready to build your own ML pipeline on AWS SageMaker?**
-
-[Get Started](research.ipynb) | [AWS Console](https://console.aws.amazon.com/sagemaker/) | [Documentation](https://docs.aws.amazon.com/sagemaker/)
-
-</div>

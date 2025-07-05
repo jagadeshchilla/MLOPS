@@ -1,10 +1,5 @@
 # 🚀 Apache Airflow with Astro CLI - Complete Setup Guide
 
-[![Apache Airflow](https://img.shields.io/badge/Apache%20Airflow-2.8+-blue.svg)](https://airflow.apache.org/)
-[![Astro CLI](https://img.shields.io/badge/Astro%20CLI-1.34.1-orange.svg)](https://www.astronomer.io/)
-[![Python](https://img.shields.io/badge/Python-3.12+-green.svg)](https://python.org/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-
 ## 📚 Table of Contents
 
 - [Introduction to Apache Airflow](#-introduction-to-apache-airflow)
@@ -16,7 +11,6 @@
 - [Getting Started](#-getting-started)
 - [DAGs in This Project](#-dags-in-this-project)
 - [Troubleshooting](#-troubleshooting)
-- [Resources](#-resources)
 
 ---
 
@@ -259,55 +253,3 @@ PythonOperator(
     python_callable=my_function  # Context provided automatically
 )
 ```
-
----
-
-## 📚 Resources
-
-### **Official Documentation**
-- [Apache Airflow Documentation](https://airflow.apache.org/docs/)
-- [Astro CLI Documentation](https://www.astronomer.io/docs/astro/cli/)
-- [Astronomer Academy](https://academy.astronomer.io/)
-
-### **Learning Materials**
-- [Airflow 101 Learning Path](https://academy.astronomer.io/path/airflow-101)
-- [DAG Writing Best Practices](https://airflow.apache.org/docs/apache-airflow/stable/best-practices.html)
-- [Airflow Concepts](https://airflow.apache.org/docs/apache-airflow/stable/concepts/)
-
-### **Community**
-- [Apache Airflow Slack](https://apache-airflow-slack.herokuapp.com/)
-- [Astronomer Community Forum](https://forum.astronomer.io/)
-- [GitHub Repository](https://github.com/apache/airflow)
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-## 🎯 Next Steps
-
-- [ ] **Add Data Connections**: Configure connections to external data sources
-- [ ] **Implement Sensors**: Add file sensors and database sensors
-- [ ] **Create Custom Operators**: Build domain-specific operators
-- [ ] **Add Testing**: Implement comprehensive DAG testing
-- [ ] **Set up CI/CD**: Automate testing and deployment
-- [ ] **Monitor Performance**: Add performance monitoring and alerting
-
----
-
-<div align="center">
-
-**Made with ❤️ using Apache Airflow and Astro CLI**
-
-[⬆ Back to Top](#-apache-airflow-with-astro-cli---complete-setup-guide)
-
-</div>
