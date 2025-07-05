@@ -1,4 +1,55 @@
 # 📱 Mobile Price Classification with AWS SageMaker
+
+### **🎯 What is AWS SageMaker?**
+
+AWS SageMaker is a fully managed machine learning service that provides:
+- **🔬 Complete ML Workflow**: End-to-end machine learning development lifecycle
+- **⚡ Scalable Training**: Distributed training with automatic scaling
+- **🚀 One-Click Deployment**: Seamless model deployment to production endpoints
+- **📊 Built-in Algorithms**: Pre-built algorithms optimized for performance
+- **🔒 Enterprise Security**: Integrated security, compliance, and governance features
+
+### **🏗️ SageMaker Architecture**
+
+```mermaid
+graph TB
+    subgraph "Data Pipeline"
+        A[Data Sources] --> B[S3 Data Lake]
+        B --> C[SageMaker Processing]
+        C --> D[Feature Store]
+    end
+    
+    subgraph "ML Training"
+        E[Training Scripts] --> F[SageMaker Training Jobs]
+        F --> G[Model Artifacts]
+        G --> H[Model Registry]
+    end
+    
+    subgraph "Model Deployment"
+        I[Inference Code] --> J[SageMaker Endpoints]
+        J --> K[Real-time Inference]
+        J --> L[Batch Transform]
+    end
+    
+    subgraph "Monitoring & Governance"
+        M[Model Monitor] --> N[Data Drift Detection]
+        N --> O[Model Performance]
+        O --> P[Automated Retraining]
+    end
+    
+    D --> F
+    H --> I
+    K --> M
+    P --> F
+    
+    style F fill:#FF9900,stroke:#333,stroke-width:2px,color:#fff
+    style J fill:#FF9900,stroke:#333,stroke-width:2px,color:#fff
+    style H fill:#569A31,stroke:#333,stroke-width:2px,color:#fff
+```
+
+
+
+```
 > A complete machine learning pipeline for mobile phone price classification using AWS SageMaker, achieving 88.33% accuracy with Random Forest classifier.
 
 ## 🎯 Project Overview
